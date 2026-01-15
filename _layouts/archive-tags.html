@@ -5,12 +5,17 @@ title: "Posts tagged with {{ page.title }}"
 
 <h1>Posts tagged with "{{ page.title }}"</h1>
 
-<ul>
-{% for post in page.posts %}
-  <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-{% endfor %}
-</ul>
-
-{% if page.posts == empty %}
+{% if page.posts != empty %}
+  <ul>
+    {% for post in page.posts %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        {% if post.tags %}
+          <small>({{ post.tags | join: ", " }})</small>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
   <p>No posts found for this tag.</p>
 {% endif %}

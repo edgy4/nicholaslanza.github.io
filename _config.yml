@@ -222,19 +222,14 @@ kramdown:
 
 
 # These settings control the types of collections used by the template
+# Collections
 collections:
   writeups:
     output: true
-    permalink: /writeups/:path/
+    permalink: /writeups/:title/
   teaching:
     output: true
-    permalink: /:collection/:path/
-  certifications:
-    output: true
-    permalink: /:collection/:path/
-  achievements:
-    output: true
-    permalink: /:collection/:path/
+    permalink: /teaching/:title/
 
     
 
@@ -362,6 +357,7 @@ whitelist:
  # type: liquid
   #path: /tags/
 # https://github.com/jekyll/jekyll-archives
+# Jekyll Archives
 jekyll-archives:
   enabled:
     - tags
