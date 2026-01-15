@@ -5,9 +5,22 @@ title: "Posts tagged with {{ page.title }}"
 
 <h1>Posts tagged with "{{ page.title }}"</h1>
 
-{% if page.posts != empty %}
+{% assign writeups = site.writeups %}
+{% if writeups == nil %}
+  {% assign writeups = "" | split: "" %}
+{% endif %}
+
+{% assign teaching = site.teaching %}
+{% if teaching == nil %}
+  {% assign teaching = "" | split: "" %}
+{% endif %}
+
+{% assign all_posts = writeups | concat: teaching %}
+{% assign tagged_posts = all_posts | where_exp: "post", "post.tags contains page.title" %}
+
+{% if tagged_posts.size > 0 %}
   <ul>
-    {% for post in page.posts %}
+    {% for post in tagged_posts %}
       <li>
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         {% if post.tags %}

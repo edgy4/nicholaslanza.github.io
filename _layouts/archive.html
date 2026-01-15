@@ -2,23 +2,11 @@
 layout: default
 ---
 
-{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
-  {% include page__hero.html %}
-{% endif %}
-
-{% if page.url != "/" and site.breadcrumbs %}
-  {% unless paginator %}
-    {% include breadcrumbs.html %}
-  {% endunless %}
-{% endif %}
-
 <div id="main" role="main">
   {% include sidebar.html %}
 
   <div class="archive">
-    {% unless page.header.overlay_color or page.header.overlay_image %}
-      <h1 class="page__title">{{ page.title }}</h1>
-    {% endunless %}
+    <h1 class="page__title">{{ page.title }}</h1>
 
     {% assign collection_name = nil %}
     {% if page.url contains '/writeups' %}
@@ -27,11 +15,10 @@ layout: default
       {% assign collection_name = 'teaching' %}
     {% endif %}
 
-    {% if collection_name and site[collection_name] %}
+    {% if collection_name %}
       {% assign posts_collection = site[collection_name] %}
       {% if posts_collection == nil %}
-        {% capture empty_array %}{% endcapture %}
-        {% assign posts_collection = empty_array | split: "|" %}
+        {% assign posts_collection = "" | split: "" %}
       {% endif %}
 
       {% assign posts_collection = posts_collection | sort: 'date' %}
@@ -42,7 +29,6 @@ layout: default
             <h2 class="archive__title">
               <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
             </h2>
-
             {% include tag-list.html collection=post %}
           </article>
         {% endfor %}
