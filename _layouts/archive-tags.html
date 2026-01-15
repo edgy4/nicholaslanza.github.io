@@ -1,31 +1,16 @@
 ---
 layout: single
-title: "{{ page.title }}"
+title: "Posts tagged with {{ page.title }}"
 ---
 
 <h1>Posts tagged with "{{ page.title }}"</h1>
 
 <ul>
-  {% assign writeups = site.writeups %}
-  {% if writeups == nil %}
-    {% assign writeups = "" | split: "" %}
-  {% endif %}
-
-  {% assign teaching = site.teaching %}
-  {% if teaching == nil %}
-    {% assign teaching = "" | split: "" %}
-  {% endif %}
-
-  {% assign all_collections = writeups | concat: teaching %}
-
-  {% assign posts_with_tag = all_collections | where_exp: "post", "post.tags contains page.title" %}
-
-  {% if posts_with_tag.size > 0 %}
-    {% for post in posts_with_tag %}
-      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  {% else %}
-    <li>No posts found for this tag.</li>
-  {% endif %}
+{% for post in page.posts %}
+  <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+{% endfor %}
 </ul>
 
+{% if page.posts == empty %}
+  <p>No posts found for this tag.</p>
+{% endif %}
