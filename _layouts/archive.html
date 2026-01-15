@@ -27,20 +27,31 @@ layout: default
       {% assign collection_name = 'teaching' %}
     {% endif %}
 
-    {% if collection_name %}
-      {% assign posts_collection = site[collection_name] | sort: 'date' | reverse %}
+    {% if collection_name and site[collection_name] %}
+      {% assign posts_collection = site[collection_name] %}
+      {% if posts_collection == nil %}
+        {% capture empty_array %}{% endcapture %}
+        {% assign posts_collection = empty_array | split: "|" %}
+      {% endif %}
 
-      {% for post in posts_collection %}
-        <article class="archive__item">
-          <h2 class="archive__title">
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          </h2>
+      {% assign posts_collection = posts_collection | sort: 'date' %}
 
-          {% include tag-list.html collection=post %}
-        </article>
-      {% endfor %}
+      {% if posts_collection.size > 0 %}
+        {% for post in posts_collection %}
+          <article class="archive__item">
+            <h2 class="archive__title">
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h2>
+
+            {% include tag-list.html collection=post %}
+          </article>
+        {% endfor %}
+      {% else %}
+        <p>No posts found.</p>
+      {% endif %}
     {% else %}
       <p>No posts found.</p>
     {% endif %}
+
   </div>
 </div>

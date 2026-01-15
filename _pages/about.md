@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: ""
 author_profile: true
 redirect_from: 
   - /about/
@@ -15,7 +15,8 @@ This website serves as a portfolio of techniques, tutorials, and machine walkthr
 
 ## What You’ll Find Here
 
-• Lab writeups from a variety of providers like Hack The Box, or Offsec Proving Grounds with step‑by‑step reasoning 
+• Lab write-ups from a variety of platforms, like Hack The Box, Offsec Proving Grounds, and VulnLabs.
+
 
 • Practical demonstrations of Linux and Windows exploitation 
 
