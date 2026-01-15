@@ -9,11 +9,11 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Your Name / Site Title"
+title        : "Nicholas Lanza / Security Portfolio"
 title_separator          : "-"
-name                     : &name "Your Name"
-description              : &description "Your Name's academic portfolio"   # Update this with a general description of your site, this is the default if not overridden by a page
-url                      : https://academicpages.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
+name                     : &name "Nicholas Lanza"
+description              : &description "Nicholas Lanza's security portfolio"   # Update this with a general description of your site, this is the default if not overridden by a page
+url                      : https://nicholaslanza.me # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "academicpages/academicpages.github.io"
@@ -24,24 +24,26 @@ repository               : "academicpages/academicpages.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
+  name             : "Nicholas Lanza"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  bio              : "OSCP Certified    IT Technician" 
+  location         : "Philadelphia, PA"
+  employer         : #"New Life of Community Health"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "nicholaslanza@proton.me"
 
   # Academic websites
+  email            : "nicholaslanza@proton.me"
+  hackthebox       : "1262678"
+  tryhackme        : "Edgy123"
+  offsec           : "012b5cc7-2f37-11f0-9794-0ad45fbd5c7b"
   academia         : # URL
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+  googlescholar    : #
   inspire-hep      : # URL
   impactstory      : # URL
-  orcid            : "https://orcid.org/yourorcidurl"
   semantic         : # URL
   ssrn             : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   researchgate     : # URL
   scopus           : # URL
   zotero           : # URL
@@ -51,13 +53,13 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "academicpages"
+  github           : "edgy4"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
   artstation       : # Username
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
+  bluesky          : # # Replace this with you Bluesky username
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username
@@ -210,7 +212,7 @@ incremental: false
 # Markdown Processing
 kramdown:
   input: GFM
-  hard_wrap: false
+  hard_wrap: true
   auto_ids: true
   footnote_nr: 1
   entity_output: as_char
@@ -221,18 +223,20 @@ kramdown:
 
 # These settings control the types of collections used by the template
 collections:
+  writeups:
+    output: true
+    permalink: /writeups/:path/
   teaching:
     output: true
     permalink: /:collection/:path/
-  publications:
+  certifications:
     output: true
     permalink: /:collection/:path/
-  portfolio:
+  achievements:
     output: true
     permalink: /:collection/:path/
-  talks:
-    output: true
-    permalink: /:collection/:path/
+
+    
 
 
 # These settings control how pages and collections are included in the site
@@ -290,6 +294,17 @@ defaults:
       layout: talk
       author_profile: true
       share: true
+      defaults:
+  # _writeups
+  - scope:
+      path: ""
+      type: writeups
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      defaults:
+
 
 
 # Sass/SCSS
@@ -313,7 +328,8 @@ plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
   - jemoji
-
+  - jekyll-archives  # <-- add this
+  
 # Mimic GitHub Pages with --safe
 whitelist:
   - jekyll-feed
@@ -322,6 +338,7 @@ whitelist:
   - jekyll-sitemap
   - jekyll-redirect-from
   - jemoji
+  - jekyll-archives 
 
 
 # Archives
@@ -334,28 +351,22 @@ whitelist:
 #  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
 #  - <base_path/categories/my-awesome-category/index.html ~> path: /categories/
 #  - <base_path/my-awesome-category/index.html ~> path: /
-category_archive:
-  type: liquid
-  path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
+#category_archive:
+ # type: liquid
+  #path: /categories/
+#tag_archive:
+ # type: liquid
+  #path: /tags/
 # https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
+jekyll-archives:
+  enabled:
+    - tags
+  layouts:
+    tag: archive-tags
+  permalinks:
+    tag: /tags/:name/
+  collections:
+    - writeups
+    - teaching
 
 
-# HTML Compression
-# - https://jch.penibelst.de/
-compress_html:
-  clippings: all
-  ignore:
-    envs: development

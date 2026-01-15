@@ -1,0 +1,25 @@
+/* Dark code blocks */
+pre,
+pre.highlight {
+  background-color: #0d1117; /* GitHub dark */
+  color: #c9d1d9;
+  border-radius: 8px;
+  padding: 1em;
+  overflow-x: auto;
+}
+
+/* Inline code */
+code {
+  background-color: #161b22;
+  color: #c9d1d9;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+/* Rouge syntax tokens */
+.highlight .k  { color: #ff7b72; } /* keywords */
+.highlight .s  { color: #a5d6ff; } /* strings */
+.highlight .c  { color: #8b949e; } /* comments */
+.highlight .n  { color: #c9d1d9; } /* names */
+.highlight .o  { color: #ff7b72; } /* operators */
+.highlight .p  { color: #c9d1d9; } /* punctuation */

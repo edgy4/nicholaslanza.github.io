@@ -3,24 +3,18 @@
 
 /*
  * This file controls what is imported from /_sass
- *
- * Note that the files are processed in the order they are imported, so they are partly
-   sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
+ * The order matters: dependencies first, overrides last.
  */
 
 @import
     "vendor/breakpoint/breakpoint",
-
     "themes",
     "theme/{{ site.site_theme | default: 'default' | append: '_light' }}",
     "theme/{{ site.site_theme | default: 'default' | append: '_dark' }}",
-
     "include/mixins",
     "vendor/susy/susy",
-
     "layout/reset",
     "layout/base",
-
     "include/utilities",
     "layout/tables",
     "layout/buttons",
@@ -29,15 +23,22 @@
     "layout/navigation",
     "layout/footer",
     "syntax",
-
     "layout/forms",
-
     "layout/page",
     "layout/archive",
     "layout/sidebar",
     "layout/json_cv",
-
     "vendor/font-awesome/fontawesome",
     "vendor/font-awesome/solid",
-    "vendor/font-awesome/brands"
-;
+    "vendor/font-awesome/brands";
+
+/* ==========================================================================
+   Paragraph text smaller for writeups/posts
+   ========================================================================== */
+
+/* Shrink paragraph text in posts/writeups */
+.page__content p {
+  font-size: .875em !important;   /* 87.5% of normal size */
+  line-height: 1.6 !important;     /* improves readability */
+}
+

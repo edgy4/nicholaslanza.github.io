@@ -1,28 +1,19 @@
-{% include base_path %}
+{% comment %}
+Renders tags for a given page/post.
+Pass an object with: {% include tag-list.html collection=post %}
+Defaults to page if no collection passed.
+{% endcomment %}
 
-{% case site.tag_archive.type %}
-  {% when "liquid" %}
-    {% assign path_type = "#" %}
-  {% when "jekyll-archives" %}
-    {% assign path_type = nil %}
-{% endcase %}
+{% assign obj = include.collection | default: page %}
 
-{% if site.tag_archive.path %}
-  {% comment %}
-    <!-- Sort alphabetically regardless of case e.g. a B c d E -->
-    <!-- modified from http://www.codeofclimber.ru/2015/sorting-site-tags-in-jekyll/ -->
-  {% endcomment %}
-  {% capture page_tags %}{% for tag in page.tags %}{{ tag | downcase }}#{{ tag }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
-  {% assign tag_hashes = (page_tags | split: ',' | sort:0) %}
-
+{% if obj.tags and obj.tags != empty %}
   <p class="page__taxonomy">
-    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].tags_label | default: "Tags:" }} </strong>
-    <span itemprop="keywords">
-    {% for hash in tag_hashes %}
-      {% assign keyValue = hash | split: '#' %}
-      {% capture tag_word %}{{ keyValue[1] | strip_newlines }}{% endcapture %}
-      <a href="{{ base_path }}{{ tag_word | slugify | prepend: path_type | prepend: site.tag_archive.path }}" class="page__taxonomy-item" rel="tag">{{ tag_word }}</a>{% unless forloop.last %}<span class="sep">, </span>{% endunless %}
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags:</strong>
+    {% for tag in obj.tags %}
+      {% assign tag_slug = tag | slugify %}
+      {% if tag_slug != 'writeups' %}
+        <a href="{{ '/tags/' | append: tag_slug | append: '/' | relative_url }}" class="page__taxonomy-item" rel="tag">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+      {% endif %}
     {% endfor %}
-    </span>
   </p>
 {% endif %}

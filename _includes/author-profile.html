@@ -171,6 +171,28 @@
       {% if author.zhihu %}
       <li><a href="https://www.zhihu.com/people/{{ author.zhihu }}"><i class="fab fa-fw fa-zhihu icon-pad-right" aria-hidden="true"></i>Zhihu</a></li>
       {% endif %}      
+      {% if author.hackthebox %}
+<li>
+  <a href="https://app.hackthebox.com/profile/{{ author.hackthebox }}">
+    <i class="fas fa-cube icon-pad-right" aria-hidden="true"></i>Hack The Box
+  </a>
+</li>
+{% endif %}
+
+{% if author.tryhackme %}
+<li>
+  <a href="https://tryhackme.com/p/{{ author.tryhackme }}">
+    <i class="fas fa-user-secret icon-pad-right" aria-hidden="true"></i>TryHackMe
+  </a>
+</li>
+{% endif %}
+{% if author.offsec %}
+<li>
+  <a href="https://portal.offsec.com/public-profile/{{ author.offsec }}">
+    <i class="fas fa-fw fa-shield-halved icon-pad-right" aria-hidden="true"></i>Offensive Security
+  </a>
+</li>
+{% endif %}
     </ul>
   </div>
 </div>

@@ -34,13 +34,20 @@ layout: default
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
         {% endif %}
         
-        {% if page.collection == 'teaching' %}
-          <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif page.venue and page.date %}
-          <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif page.date %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
-        {% endif %}    
+{% unless page.collection == "writeups" %}
+  {% if page.collection == 'teaching' %}
+    <p>{{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | date: "%Y" }}</p>
+  {% elsif page.venue and page.date %}
+    <p>Published in <i>{{ page.venue }}</i>, {{ page.date | date: "%Y" }}</p>
+  {% elsif page.date %}
+    <p class="page__date">
+      <strong><i class="fa fa-fw fa-calendar"></i> Published:</strong>
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%B %d, %Y" }}
+      </time>
+    </p>
+  {% endif %}
+{% endunless %}   
         </header>
       {% endunless %}
 
@@ -85,7 +92,9 @@ layout: default
 
       {% if page.share %}{% include social-share.html %}{% endif %}
 
-      {% include post_pagination.html %}
+      {% unless page.collection == "writeups" %}
+  {% include post_pagination.html %}
+{% endunless %}
     </div>
 
     {% if site.comments.provider and page.comments %}
@@ -103,7 +112,33 @@ layout: default
         {% for post in site.related_posts limit:4 %}
           {% include archive-single.html type="grid" %}
         {% endfor %}
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("pre").forEach(pre => {
+    let el = pre.parentElement;
+
+    // Kill padding/margin on all parents (theme wrappers)
+    for (let i = 0; i < 6 && el; i++) {
+      el.style.padding = "0";
+      el.style.margin = "0";
+      el.style.background = "#000";
+      el = el.parentElement;
+    }
+
+    // Final pre styling
+    pre.style.padding = "0.15rem 0.3rem";
+    pre.style.margin = "0";
+    pre.style.background = "#000";
+    pre.style.color = "#fff";
+    pre.style.lineHeight = "1.2";
+  });
+});
+</script>
+
+
       </div>
     </div>
   {% endif %}
 </div>
+
+

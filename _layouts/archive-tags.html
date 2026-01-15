@@ -1,0 +1,18 @@
+---
+layout: single
+title: "{{ page.title }}"
+---
+
+<h1>Posts tagged with "{{ page.title }}"</h1>
+
+<ul>
+{% assign all_collections = site.writeups | concat: site.teaching %}
+{% assign posts_with_tag = all_collections | where_exp: "post", "post.tags contains page.title" %}
+{% for post in posts_with_tag %}
+  <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+{% endfor %}
+
+{% if posts_with_tag == empty %}
+  <li>No posts found for this tag.</li>
+{% endif %}
+</ul>

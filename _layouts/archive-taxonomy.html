@@ -8,9 +8,19 @@ author_profile: false
 
   <div class="archive">
     <h1 class="page__title">{{ page.title }}</h1>
+
     {% include base_path %}
-    {% for post in page.posts %}
-      {% include archive-single.html %}
+
+    <ul>
+    {% assign docs = site.posts | concat: site.writeups %}  {# combine posts + writeups #}
+
+    {% for doc in docs %}
+      {% if doc.tags contains page.title %}
+        <li>
+          <a href="{{ doc.url }}">{{ doc.title }}</a>
+        </li>
+      {% endif %}
     {% endfor %}
+    </ul>
   </div>
 </div>

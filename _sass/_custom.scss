@@ -1,0 +1,17 @@
+/* Prism / Rouge code blocks */
+code[class*="language-"],
+pre[class*="language-"] {
+  border-radius: 6px;
+  text-shadow: none !important;
+  background: #242424 !important;
+}
+
+/* Remove operator background */
+span.token.operator {
+  background: none !important;
+}
+
+/* Keywords color */
+span.token.keyword {
+  color: #866cba !important;
+}

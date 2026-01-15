@@ -1,41 +1,87 @@
+/* Base code color (fallback for unstyled tokens) */
+.highlight,
+.highlight pre,
+.highlight code {
+  color: #ffffff !important;
+}
+
 /* ==========================================================================
-   Syntax highlighting
+   Syntax highlighting — BLACK, TIGHT, NO WHITE PADDING
    ========================================================================== */
 
-div.highlighter-rouge, figure.highlight {
+div.highlighter-rouge,
+figure.highlight {
   position: relative;
-  margin-bottom: 1em;
-  padding: 1em;
-  border: 1px solid var(--global-border-color);
-  border-radius: $border-radius;
-  background-color: var(--global-code-background-color);
-  box-shadow: $box-shadow;
+  margin: 0.25em 0 !important;   /* minimal vertical spacing */
+  padding: 0 !important;         /* REMOVE wrapper padding */
+  border: none !important;
+  border-radius: 0 !important;
+  background: #000 !important;   /* force black */
+  box-shadow: none !important;
   font-size: $type-size-4;
 
   &:before {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0.5em;
-    background-color: mix(#fff, #7a8288, 90%);
-    content: "\f121";
-    font-family: "Font Awesome 6 Free" !important;
-    font-size: $type-size-6;
-    line-height: 1;
-    text-transform: none;
-    speak: none;
+    display: none !important;    /* remove icon box */
   }
 
   .highlight {
-    margin: 0;
+    margin: 0 !important;
+    padding: 0 !important;
     font-family: $monospace;
     font-size: $type-size-6;
-    line-height: 1.8;
+    line-height: 1.2 !important;
+    background: #000 !important;
   }
 }
 
-.highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
+/* ACTUAL code box */
+.highlight pre,
+pre {
+  background: #000 !important;
+  color: #ffffff !important; /* pure white base text */
+  padding: 0.15rem 0.3rem !important;
+  margin: 0 !important;
+  border-radius: 4px !important;
+  overflow: auto !important;
+}
+
+/* Remove table spacing (line numbers, rouge tables) */
+.highlight table td,
+.highlight table pre {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Inline code untouched */
+p code,
+li code {
+  background: #1e1e1e !important;
+  color: #ffffff !important;
+  padding: 0.1em 0.25em;
+  border-radius: 4px;
+}
+/* ================================
+   KILL CONTENT FLOW SPACING
+   ================================ */
+
+.page__content > div.highlighter-rouge,
+.page__content > figure.highlight,
+.page__content > pre {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #000 !important;
+}
+
+/* REMOVE MARKDOWN PARAGRAPH SPACING AROUND CODE BLOCKS */
+.page__content > p:has(+ div.highlighter-rouge),
+.page__content > p:has(+ figure.highlight),
+.page__content > div.highlighter-rouge + p,
+.page__content > figure.highlight + p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
 
 
 /*
@@ -122,3 +168,4 @@ div.highlighter-rouge, figure.highlight {
 .highlight .vg { color: #22b3eb } /* Name.Variable.Global */
 .highlight .vi { color: #22b3eb } /* Name.Variable.Instance */
 .highlight .il { color: #2aa198 } /* Literal.Number.Integer.Long */
+

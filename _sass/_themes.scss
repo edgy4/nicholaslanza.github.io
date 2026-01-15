@@ -7,7 +7,7 @@
    ========================================================================== */
 
 /* Used to set the size for <em> */
-$doc-font-size              : 16;
+$doc-font-size              : 20;
 
 /* Paragraph indention */
 $paragraph-indent           : false; // true, false (default)
@@ -101,4 +101,15 @@ $vimeo-color                : #1ab7ea;
 $vine-color                 : #00bf8f;
 $youtube-color              : #bb0000;
 $xing-color                 : #006567;
+
+
+
+
+/* Shrink body text for posts and writeups */
+.layout--single.writeups .page__content p,
+.layout--single.posts .page__content p {
+  font-size: 0.85em;  // adjust to what you want
+  line-height: 1.6;   // keep spacing readable
+  margin-bottom: 1.2em;
+}
    

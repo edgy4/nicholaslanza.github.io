@@ -19,6 +19,28 @@ layout: default
     {% unless page.header.overlay_color or page.header.overlay_image %}
       <h1 class="page__title">{{ page.title }}</h1>
     {% endunless %}
-    {{ content }}
+
+    {% assign collection_name = nil %}
+    {% if page.url contains '/writeups' %}
+      {% assign collection_name = 'writeups' %}
+    {% elsif page.url contains '/teaching' %}
+      {% assign collection_name = 'teaching' %}
+    {% endif %}
+
+    {% if collection_name %}
+      {% assign posts_collection = site[collection_name] | sort: 'date' | reverse %}
+
+      {% for post in posts_collection %}
+        <article class="archive__item">
+          <h2 class="archive__title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h2>
+
+          {% include tag-list.html collection=post %}
+        </article>
+      {% endfor %}
+    {% else %}
+      <p>No posts found.</p>
+    {% endif %}
   </div>
 </div>
