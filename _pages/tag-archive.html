@@ -1,17 +1,59 @@
 ---
-layout: archive
+layout: single
 permalink: /tags/
-title: "Posts by Tags"
+title: "Posts by Tag"
 author_profile: true
 ---
 
-{% include base_path %}
-{% include group-by-array collection=site.posts field="tags" %}
+{% assign all_posts = "" | split: "" %}
 
-{% for tag in group_names %}
-  {% assign posts = group_items[forloop.index0] %}
-  <h2 id="{{ tag | slugify }}" class="archive__subtitle">{{ tag }}</h2>
-  {% for post in posts %}
-    {% include archive-single.html %}
-  {% endfor %}
+{% if site.writeups %}
+  {% assign all_posts = all_posts | concat: site.writeups %}
+{% endif %}
+
+{% if site.teaching %}
+  {% assign all_posts = all_posts | concat: site.teaching %}
+{% endif %}
+
+{% assign tags = "" | split: "" %}
+{% for post in all_posts %}
+  {% if post.tags %}
+    {% for tag in post.tags %}
+      {% assign tags = tags | push: tag %}
+    {% endfor %}
+  {% endif %}
 {% endfor %}
+{% assign tags = tags | uniq | sort %}
+
+<div id="tag-container">
+
+{% for tag in tags %}
+  <section id="{{ tag | slugify }}" class="tag-section">
+    <h2 class="archive__subtitle">{{ tag }}</h2>
+
+    <ul>
+      {% for post in all_posts %}
+        {% if post.tags contains tag %}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+{% endfor %}
+
+</div>
+
+<style>
+.tag-section {
+  display: none;
+}
+.tag-section:target {
+  display: block;
+}
+</style>
+
+<noscript>
+  <p>Please enable JavaScript to view tags.</p>
+</noscript>

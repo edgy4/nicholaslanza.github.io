@@ -353,22 +353,22 @@ whitelist:
 #category_archive:
  # type: liquid
   #path: /categories/
-#tag_archive:
- # type: liquid
-  #path: /tags/
+tag_archive:
+  type: liquid
+  path: /tags/
 # https://github.com/jekyll/jekyll-archives
 # Jekyll Archives
-jekyll-archives:
-  enabled:
-    - tags
-  layouts:
-    tag: archive-tags
-  permalinks:
-    tag: /tags/:name/
-  collections:
-    writeups:
-      output: true
-    teaching:
-      output: true
+#jekyll-archives:
+ # enabled:
+  #  - tags
+  #layouts:
+   # tag: archive-tags
+  #permalinks:
+   # tag: /tags/:name/
+  #collections:
+   # writeups:
+    #  output: true
+    #teaching:
+     # output: true
 
 

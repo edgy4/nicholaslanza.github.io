@@ -2,17 +2,27 @@
 Renders tags for a given page/post.
 Pass an object with: {% include tag-list.html collection=post %}
 Defaults to page if no collection passed.
+GitHub Pages–safe (no jekyll-archives).
 {% endcomment %}
 
 {% assign obj = include.collection | default: page %}
 
 {% if obj.tags and obj.tags != empty %}
   <p class="page__taxonomy">
-    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags:</strong>
+    <strong>
+      <i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags:
+    </strong>
+
     {% for tag in obj.tags %}
       {% assign tag_slug = tag | slugify %}
       {% if tag_slug != 'writeups' %}
-        <a href="{{ '/tags/' | append: tag_slug | append: '/' | relative_url }}" class="page__taxonomy-item" rel="tag">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+        <a
+          href="{{ '/tags/#' | append: tag_slug | relative_url }}"
+          class="page__taxonomy-item"
+          rel="tag"
+        >
+          {{ tag }}
+        </a>{% unless forloop.last %}, {% endunless %}
       {% endif %}
     {% endfor %}
   </p>
