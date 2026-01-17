@@ -42,3 +42,12 @@
   line-height: 1.6 !important;     /* improves readability */
 }
 
+/* Shrink all bullet points site-wide */
+ul li,
+ol li {
+  font-size: 0.875em !important;   /* match paragraph text size */
+  line-height: 1.6 !important;     /* keeps spacing readable */
+  margin-bottom: 0.5em;            /* optional: spacing between bullets */
+}
+
+

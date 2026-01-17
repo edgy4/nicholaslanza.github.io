@@ -215,7 +215,7 @@ Making use of the identified file upload vulnerability, the attacker set up a li
 
 ## Privilege Escalation
 <div style="margin: 1rem 0;"></div>
-Through enumeration, the attacker identified that the target was running a Linux kernel version vulnerable to a known privilege escalation exploit.
+Through enumeration, the attacker identified that the target was running a Linux kernel version vulnerable to CVE-2017-16995.
 [https://www.exploit-db.com/exploits/45010](https://www.exploit-db.com/exploits/45010)
 ```bash
 
