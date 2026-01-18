@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Saving Time on Engagements With zsh Automation"
+title: "Saving Time on Engagements With ZSH Automation"
 collection: teaching
 categories: teaching
 permalink: /teaching/zsh-workflow/
