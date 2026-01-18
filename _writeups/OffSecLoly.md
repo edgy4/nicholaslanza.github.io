@@ -8,7 +8,12 @@ permalink: /writeups/loly/
 tags: [proving-grounds, linux, wordpress]
 ---
 
+##Overview
 
+This write-up covers Loly, a medium level, OSCP-style standalone Linux machine from the Offsec Proving grounds platform featured on TJ Null’s OSCP preparation [list](https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview) . Since this is the first writeup, I wanted to start with something straightforward and not too complex. The machine is good practice for exploiting Wordpress and Linux kernel vulnerabilities.
+[https://portal.offsec.com/machine/loly-532/overview/details](https://portal.offsec.com/machine/loly-532/overview/details)
+
+<div style="margin: 2rem 0;"></div>
 
 ## Enumeration
 
