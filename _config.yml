@@ -30,10 +30,9 @@ author:
   location         : "Philadelphia, PA"
   employer         : #"New Life of Community Health"
   uri              : # URL
-  nlanza@nicholaslanza.me            : "nlanza@nicholaslanza.me"
+  email              : "nlanza@nicholaslanza.me"
 
   # Academic websites
-  mail             : "nlanza@nicholaslanza.me"
   hackthebox       : "1262678"
   tryhackme        : "Edgy123"
   offsec           : "012b5cc7-2f37-11f0-9794-0ad45fbd5c7b"
