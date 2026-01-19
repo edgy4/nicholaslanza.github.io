@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 ## About Me
-I’m an **OSCP‑certified IT Technician** with **5 years of hands‑on experience** supporting Windows environments. Alongside my professional IT background, I am extremely passionate about offensive security, developing practical exploitation skills through certifications, labs, and competitive platforms. You can view my resume here [CV](http://nicholaslanza.me/cv/).
+I’m an **OSCP‑certified IT Technician** with **5 years of hands‑on experience** supporting Windows environments. Alongside my professional IT background, I am extremely passionate about offensive security and linux, developing practical exploitation skills through certifications, labs, and competitive platforms. You can view my resume here [CV](http://nicholaslanza.me/cv/).
 
 ## Purpose of This Site
 This website serves as a portfolio of techniques, tutorials, and machine walkthroughs. The goal is to present  thought processes clearly and professionally from an attacker's perspective, mirroring how I would approach a target during an assessment or red team engagement.
