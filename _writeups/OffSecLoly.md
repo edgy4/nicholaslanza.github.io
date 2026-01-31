@@ -3,9 +3,9 @@ layout: single
 title: 'Proving Grounds Loly'
 collection: writeups
 author_profile: true
-date: 2012-08-14
+date: 2026-01-01
 permalink: /writeups/loly/
-tags: [proving-grounds, linux, wordpress]
+tags: [Proving Grounds, Medium, Linux, Wordpress]
 ---
 
 ## Overview
