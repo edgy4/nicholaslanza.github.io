@@ -66,7 +66,7 @@ layout: default
                 {% endif %}
                 {% if page.date %}
                   {% capture date_meta %}
-                    <span class='terminal-label'>RELEASE_DATE</span> {{ page.date | date: "%Y" }}
+                    <span class="terminal-label">RELEASE_DATE</span> {{ page.date | date: "%Y" }}
                   {% endcapture %}
                   {% assign date_meta = date_meta | strip %}
                   {% assign meta_items = meta_items | push: date_meta %}
