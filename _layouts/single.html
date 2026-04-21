@@ -61,10 +61,15 @@ layout: default
                   {% capture venue_meta %}
                     <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <i>{{ page.venue }}</i>
                   {% endcapture %}
-                  {% assign meta_items = meta_items | push: venue_meta | strip %}
+                  {% assign venue_meta = venue_meta | strip %}
+                  {% assign meta_items = meta_items | push: venue_meta %}
                 {% endif %}
                 {% if page.date %}
-                  {% assign meta_items = meta_items | push: "<span class='terminal-label'>RELEASE_DATE</span> " | append: page.date | date: "%Y" %}
+                  {% capture date_meta %}
+                    <span class='terminal-label'>RELEASE_DATE</span> {{ page.date | date: "%Y" }}
+                  {% endcapture %}
+                  {% assign date_meta = date_meta | strip %}
+                  {% assign meta_items = meta_items | push: date_meta %}
                 {% endif %}
                 {% if meta_items.size > 0 %}
                   <p class="terminal-meta terminal-meta-line">{{ meta_items | join: ", " }}</p>
