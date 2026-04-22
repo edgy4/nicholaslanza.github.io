@@ -5,7 +5,7 @@ collection: writeups
 author_profile: true
 date: 2026-01-01
 permalink: /writeups/exception/
-tags: [HackSmarter, Medium, Linux,]
+tags: [HackSmarter, Medium, Linux, API, JS, Sudo,]
 ---
 
 ## Overview
