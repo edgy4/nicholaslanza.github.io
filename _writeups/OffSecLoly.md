@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 'Proving Grounds Loly'
+title: 'Loly  Writeup - Offsec Proving Grounds'
 collection: writeups
 author_profile: true
 date: 2026-01-01
