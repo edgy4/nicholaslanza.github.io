@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 'Billyboss Writeup - Hack Smarter'
+title: 'Billyboss Writeup - Offsec Proving Grounds'
 collection: writeups
 author_profile: true
 date: 2026-04-28
