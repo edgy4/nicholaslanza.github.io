@@ -3,7 +3,7 @@ layout: single
 title: 'Exception Writeup - Hack Smarter'
 collection: writeups
 author_profile: true
-date: 2026-01-01
+date: 2026-04-22
 permalink: /writeups/exception/
 tags: [HackSmarter, Medium, Linux, API, JS, Sudo,]
 ---
