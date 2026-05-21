@@ -3,6 +3,7 @@ layout: single
 title: "Saving Time on Engagements With ZSH Automation"
 collection: teaching
 categories: teaching
+date: 2026-01-01
 permalink: /teaching/zsh-workflow/
 tags: [zsh, tutorials]
 ---
