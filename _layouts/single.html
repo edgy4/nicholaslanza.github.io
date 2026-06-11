@@ -25,10 +25,10 @@ layout: default
       <meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">
     {% endif %}
     {% if page.date %}
-      <meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">
+      <meta itemprop="datePublished" content="{{ page.date | date: "%B %-d, %Y" }}">
     {% endif %}
     {% if page.modified %}
-      <meta itemprop="dateModified" content="{{ page.modified | date: "%B %d, %Y" }}">
+      <meta itemprop="dateModified" content="{{ page.modified | date: "%B %-d, %Y" }}">
     {% endif %}
 
     <div class="page__inner-wrap">
@@ -43,36 +43,17 @@ layout: default
             <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}
 
-          {% if page.modified %}
+          {% if page.date %}
             <p class="page__date">
-              <strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong>
-              <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time>
+              <strong><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> Published:</strong>
+              <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+            </p>
+          {% elsif page.modified %}
+            <p class="page__date">
+              <strong><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong>
+              <time datetime="{{ page.modified | date_to_xmlschema }}">{{ page.modified | date: "%B %-d, %Y" }}</time>
             </p>
           {% endif %}
-
-          {% unless page.collection == "writeups" %}
-            {% if page.collection == "teaching" %}
-              {% assign meta_items = "" | split: "" %}
-              {% if page.type %}
-                {% assign meta_items = meta_items | push: page.type %}
-              {% endif %}
-              {% if page.venue %}
-                {% assign meta_items = meta_items | push: "<i>" | append: page.venue | append: "</i>" %}
-              {% endif %}
-              {% if page.date %}
-                {% assign meta_items = meta_items | push: page.date | date: "%Y" %}
-              {% endif %}
-              {% if meta_items.size > 0 %}
-                <p>{{ meta_items | join: ", " }}</p>
-              {% endif %}
-            {% elsif page.venue or page.date %}
-              <p>
-                {% if page.venue %}Published in <i>{{ page.venue }}</i>{% endif %}
-                {% if page.venue and page.date %}, {% endif %}
-                {% if page.date %}{{ page.date | date: "%B %d, %Y" }}{% endif %}
-              </p>
-            {% endif %}
-          {% endunless %}
 
         </header>
       {% endunless %}
