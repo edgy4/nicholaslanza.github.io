@@ -36,6 +36,8 @@ In order to save time the Lab starts with the open ports already written out.
  9389/tcp  open  adws
 ```
 
+<div style="margin: 2rem 0;"></div>
+
 The attacker then enumerates the domain environment using `enum4linux` and configures their local environment to resolve the target's network.
 
 ```bash
@@ -59,6 +61,7 @@ First, the attacker maps the Domain Controller's IP address to its hostnames in 
 10.1.35.123 dry.martini.bars DC01.martini.bars martini.bars
 
 ```
+<div style="margin: 2rem 0;"></div>
 
 Next, the attacker must configure their local Kerberos client. They modify the /etc/krb5.conf file, setting MARTINI.BARS as the default realm and pointing it to the Domain Controller. This ensures tools like Impacket can seamlessly request and parse Kerberos tickets.
 
@@ -83,6 +86,8 @@ Next, the attacker must configure their local Kerberos client. They modify the /
 
 ```
 
+<div style="margin: 2rem 0;"></div>
+
 Now, with the domain environment configured, the attacker uses `NetExec` to check if the Guest account is enabled and if it has access to any unauthenticated shares.
 ![smb1](/images/mart/GuestSMB.png)
 
@@ -96,8 +101,12 @@ The output confirms that the Guest account is enabled and reveals a non-standard
 
 ```
 
+<div style="margin: 2rem 0;"></div>
+
 Upon Authenticating, the attacker lists the contents of the directory and discovers a single file named `notes.txt` which includes a set of cleartext credentials at the bottom.
 ![smb2](/images/mart/smbclient.png)
+
+<div style="margin: 1rem 0;"></div>
 
 ```
  - Order more gin for lakeside
@@ -138,6 +147,7 @@ To execute the attack, the attacker uses Impacket's `GetUserSPNs.py`. The tool q
  HTTP/athena.dry.martini.bar  ATHENA_SVC  CN=Remote Management Users,CN=Builtin,DC=DRY,DC=MARTINI,DC=BARS  2026-01-20 13:20:32.856622  <never>     
 
 ```
+<div style="margin: 2rem 0;"></div>
 
 The ticket is successfully captured and saved to kerberoasting.hashes.  Because the ticket is encrypted using ATHENA_SVC's NTLM hash, the attacker can take it offline and attempt to bruteforce the password without locking out the account or generating further network noise.
 
