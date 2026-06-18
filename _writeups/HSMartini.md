@@ -20,6 +20,7 @@ This write-up covers MartiniAD, a tricky, easy level, Active Directory machine f
 In order to save time the Lab starts with the open ports already written out.
 
 ```bash
+
  53/tcp    open  domain
  88/tcp    open  kerberos-sec
  135/tcp   open  msrpc
@@ -34,6 +35,7 @@ In order to save time the Lab starts with the open ports already written out.
  3389/tcp  open  ms-wbt-server
  5985/tcp  open  wsman
  9389/tcp  open  adws
+
 ```
 
 <div style="margin: 2rem 0;"></div>
