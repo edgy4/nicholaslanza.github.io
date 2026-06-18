@@ -4,7 +4,7 @@ title: 'Martini AD Writeup - Hack Smarter'
 collection: writeups
 author_profile: true
 date: 2026-06-17
-permalink: /writeups/shadowgate/
+permalink: /writeups/martini/
 tags: [Hack Smarter, Easy, AD, ]
 ---
 
