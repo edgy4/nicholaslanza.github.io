@@ -36,21 +36,28 @@ $sidebar-screen-min-width   : 1024px;
 
 /* Dark theme for the site */
 html[data-theme="dark"] {
-    --global-base-color                 : #{$primary-color};
-    --global-bg-color                   : #{$background};
-    --global-footer-bg-color            : #{$background};
-    --global-border-color               : #{$light-gray};
-    --global-dark-border-color          : #{$background-light};
-    --global-code-background-color      : #fafafa;
-    --global-code-text-color            : #{$darker-gray};
-    --global-fig-caption-color          : #{$light-gray};
-    --global-link-color                 : #{$link};
-    --global-link-color-hover           : #{$link-dark};
-    --global-link-color-visited         : #{$link-light};
-    --global-masthead-link-color        : #{$text};
-    --global-masthead-link-color-hover  : #{$primary-color};
-    --global-text-color                 : #{$text};
-    --global-text-color-light           : #f3f3f3;
-    --global-thead-color                : #{$background-lighter};
+  /* Midnight Slate (Slightly lighter/grayer than the code boxes for depth) */
+  --global-bg-color: #1e1f29; 
+  --global-footer-bg-color: #15161e; 
+  
+  /* Your code boxes remain Dracula Slate (#282a36) */
+  --global-code-background-color: #282a36;
+  
+  /* Text */
+  --global-text-color: #f8f8f2;
+  --global-text-color-light: #6272a4;
+  --global-code-text-color: #f8f8f2;
+  
+  /* Borders - slightly lighter than the background to define the edges */
+  --global-border-color: #44475a; 
+  --global-dark-border-color: #6272a4;
+  --global-thead-color: #44475a;
+  
+  /* Accents */
+  --global-base-color: #bd93f9; 
+  --global-link-color: #ff79c6;
+  --global-link-color-hover: #8be9fd;
+  --global-link-color-visited: #bd93f9;
+  --global-masthead-bg-color: #1e1f29; /* A slightly darker shade than your #1e1f29 bg */
 }
 

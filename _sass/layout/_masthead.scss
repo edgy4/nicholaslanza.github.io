@@ -1,61 +1,46 @@
-/* ==========================================================================
-   MASTHEAD
-   ========================================================================== */
-
 .masthead {
   position: fixed;
-  background: var(--global-bg-color);
+  background-color: var(--global-masthead-bg-color); 
   height: fit-content;
   top: 0;
   width: 100%;
-
-  -webkit-animation: intro 0.3s both;
-          animation: intro 0.3s both;
-  -webkit-animation-delay: 0.15s;
-          animation-delay: 0.15s;
   z-index: 20;
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    height: 1px;
-    background: var(--global-border-color);
-    width: 100%;
-  }
+  
+  /* The "Nuclear" Fix: Ensure no borders or shadows exist */
+  border: none !important;
+  box-shadow: none !important;
 
   &__inner-wrap {
     @include container;
     @include clearfix;
+    background-color: transparent; /* Allows Masthead background to show through */
     padding: 0.5em 1em;
     font-family: $sans-serif-narrow;
 
     @include breakpoint($x-large) {
-      max-width: $x-large;
+      max-width: 1400px;
     }
 
-    nav {
-      z-index: 10;
+    nav { 
+      z-index: 10; 
+      
+      /* Make navigation text the Dracula Pink */
+      a { 
+        text-decoration: none;
+        color: var(--global-link-color); 
+        font-weight: 600;
+        
+        &:hover {
+          color: var(--global-link-color-hover);
+        }
+      }
     }
-
-    a {
-      text-decoration: none;
-    }
-  }
-}
-
-.masthead__menu {
-
-  ul {
-    margin: 0;
-    padding: 0;
-    clear: both;
-    list-style-type: none;
   }
 }
 
 .masthead__menu-item {
-  background-color: var(--global-bg-color);
+  /* Change this from var(--global-bg-color) to transparent */
+  background-color: transparent; 
   display: block;
   list-style-type: none;
   white-space: nowrap;
@@ -64,18 +49,4 @@
     padding-right: 2em;
     font-weight: 700;
   }
-}
-
-.masthead__menu-item.selected a {
-  color: var(--global-text-color);
-  font-weight: 700;
-  border-bottom: 2px solid var(--global-text-color);
-  pointer-events: none; /* Move this here */
-  cursor: default; /* Move this here too */
-}
-
-.masthead__menu-item.selected a:hover {
-  color: var(--global-text-color);
-  border-bottom: 2px solid var(--global-text-color);
-  /* No need to repeat pointer-events and cursor here */
 }

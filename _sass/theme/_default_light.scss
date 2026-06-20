@@ -1,48 +1,60 @@
 /* ==========================================================================
-    DEFAULT THEME - LIGHT VERSION
-    ========================================================================== */
+   DEFAULT THEME - LIGHT VERSION (COOL LIGHT-GREY + Muted BLUE)
+   ========================================================================== */
+
 /* Color codes used for the theme */
-$primary-color              : #2f7f93;
-$gray                       : #7a8288;
-$dark-gray                  : mix(#000, $gray, 40%);
-$darker-gray                : mix(#000, $gray, 60%);
-$light-gray                 : mix(#fff, $gray, 50%);
-$lighter-gray               : mix(#fff, $gray, 90%);
+$primary-color              : #5f758c; 
+$gray                       : #99a1a8;
+$dark-gray                  : mix(#000, $gray, 30%);
+$darker-gray                : mix(#000, $gray, 50%);
+$light-gray                 : mix(#fff, $gray, 40%);
+$lighter-gray               : mix(#fff, $gray, 85%);
 
 /* Color codes used for the site */
-$danger-color               : #ee5f5b;
-$info-color                 : #2f7f93;
-$notice-color               : #7a8288;
-$success-color              : #62c462;
-$warning-color              : #f89406;
+$danger-color               : #d9534f;
+$info-color                 : #5f758c; 
+$notice-color               : #99a1a8;
+$success-color              : #5cb85c;
+$warning-color              : #f0ad4e;
 
-/* Other basic settings for the template */
+/* Links: Muted Slate-Blue that blends with grey */
+$link                       : #366687; 
+$link-dark                  : mix(#000, $link, 20%);
+$link-light                 : mix(#fff, $link, 20%);
+
+/* Other basic settings */
 $border-radius              : 4px;
-$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
+$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.05);
 $global-transition          : all 0.2s ease-in-out;
 $masthead-height            : 70px;
-$navicon-width              : 28px;
-$navicon-height             : 4px;
-$sidebar-link-max-width     : 250px;
-$sidebar-screen-min-width   : 1024px;
 
 /* Default light theme for the site */
-:root {
-    --global-base-color                 : #{$primary-color};
-    --global-bg-color                   : #fff;
-    --global-footer-bg-color            : #f2f3f3;
-    --global-border-color               : #{$lighter-gray};
-    --global-dark-border-color          : #bdc1c4;
-    --global-code-background-color      : #fafafa;
-    --global-code-text-color            : #{$darker-gray};
-    --global-fig-caption-color          : mix(#fff,  #{$dark-gray}, 25%);
-    --global-link-color                 : #52adc8;
-    --global-link-color-hover           : mix(#000, #2f7f93, 25%);
-    --global-link-color-visited         : mix(#fff, #2f7f93, 25%);  
-    --global-masthead-link-color        : #{$dark-gray};
-    --global-masthead-link-color-hover  : mix(#000, #{$gray}, 25%);    
-    --global-text-color                 : #{$dark-gray};
-    --global-text-color-light           : #{$light-gray};
-    --global-thead-color                : #{$lighter-gray};
+:root, html[data-theme="light"] {
+  /* Backgrounds: Keeping the grey you liked */
+  --global-bg-color: #d1d5db; 
+  --global-footer-bg-color: #b9bec6; 
+  --global-code-background-color: #282a36; 
+  
+  /* Masthead: Keeping the tone uniform */
+  --global-masthead-bg-color: #d1d5db; 
+  --global-masthead-link-color: #1a3542; 
+  --global-masthead-hover-bg: #97a3b2; 
+  
+  /* Text: Deep Slate */
+  --global-text-color: #1f2937; 
+  --global-text-color-light: #4b5563; 
+  --global-code-text-color: #f8f8f2; 
+  
+  /* Borders */
+  --global-border-color: #a9b2bc;
+  --global-dark-border-color: #6b7280;
+  --global-thead-color: #cbd5e1;
+  
+  /* Accents: Blended Blue */
+  --global-base-color: #5f758c; 
+  --global-link-color: #366687;           /* Muted Slate-Blue */
+  --global-link-color-hover: #264961;    /* Slightly darker for hover */
+  --global-link-color-visited: #366687; 
+  
+  --global-fig-caption-color: #4b5563;
 }
-

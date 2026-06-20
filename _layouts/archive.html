@@ -6,12 +6,54 @@ layout: default
   {% include sidebar.html %}
 
   <div class="archive">
-    <h1 class="page__title">{{ page.title }}</h1>
+    
+    <style>
+      /* ==========================================
+         SLEEK LIST STYLING 
+         ========================================== */
+      .sleek-list-item {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid rgba(150, 150, 150, 0.2); 
+        transition: transform 0.2s ease; 
+      }
+      
+      .sleek-list-item:hover {
+        transform: translateX(8px); 
+      }
+      
+      .sleek-meta {
+        font-size: 0.8rem;
+        color: gray;
+        text-transform: uppercase; 
+        letter-spacing: 1px;
+        margin-bottom: 0.25rem;
+      }
+      
+      .sleek-title {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+      }
+      
+      .sleek-title a {
+        text-decoration: none; 
+        transition: color 0.2s;
+      }
+      
+      .sleek-title a:hover {
+        color: #007bff; /* Sharp blue hover color */
+      }
+      
+      .sleek-tags {
+        margin-top: 0.5rem;
+        opacity: 0.85; 
+      }
+    </style>
 
     {% assign collection_name = nil %}
-    {% if page.url contains '/writeups' %}
+    {% if page.url contains '/writeups' or page.url contains '/write-ups' %}
       {% assign collection_name = 'writeups' %}
-    {% elsif page.url contains '/teaching' %}
+    {% elsif page.url contains '/teaching' or page.url contains '/tutorials' %}
       {% assign collection_name = 'teaching' %}
     {% endif %}
 
@@ -21,15 +63,25 @@ layout: default
         {% assign posts_collection = "" | split: "" %}
       {% endif %}
 
-      {% assign posts_collection = posts_collection | sort: 'date' %}
+      {% assign posts_collection = posts_collection | sort: 'date' | reverse %}
 
       {% if posts_collection.size > 0 %}
         {% for post in posts_collection %}
-          <article class="archive__item">
-            <h2 class="archive__title">
+          <article class="archive__item sleek-list-item">
+            
+            <p class="page__meta sleek-meta">
+              <i class="far fa-calendar-alt" aria-hidden="true"></i> 
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+            </p>
+
+            <h2 class="archive__title sleek-title">
               <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
             </h2>
-            {% include tag-list.html collection=post %}
+            
+            <div class="sleek-tags">
+              {% include tag-list.html collection=post %}
+            </div>
+
           </article>
         {% endfor %}
       {% else %}

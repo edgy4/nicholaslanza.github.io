@@ -3,6 +3,7 @@ layout: single
 title: "Saving Time on Engagements With ZSH Automation"
 collection: teaching
 categories: teaching
+date: 2026-01-01
 permalink: /teaching/zsh-workflow/
 tags: [zsh, tutorials]
 ---
@@ -13,77 +14,70 @@ During engagements, a significant amount of time is lost repeatedly typing the s
 
 This tutorial is made to show how small zsh customizations can save you a ton of time on your next engagement.
 
-
+---
 
 ## What is the .zshrc file and Where is it Located 
 The .zshrc file is the configuration file for the Z shell, the default shell in Kali Linux and Parrot OS. It contains settings, environment variables, and customizations that load every time you start a new terminal session. By default, the file is located in your home directory at `$HOME/.zshrc` ($HOME refers to your home directory).
-## Defining the Target Once
+
+### Defining the Target Once
 Instead of repeatedly typing a target machine's IP, define it once at the start of your engagement by adding `export IP=10.10.10.10` to your .zshrc file. Keep in mind that .zshrc is only loaded when a new terminal starts. Either open a new terminal or manually reload it using `source $HOME/.zshrc`:
 
 ```bash
-
- export IP=10.10.10.10   
-
+export IP=10.10.10.10   
 ```
- <div style="margin: 1rem 0;"></div>
+
 Now if you want to target the machine its as simple as:
 
 ```bash 
-
- $ sudo nmap -sC -sV  -p- $IP --open            
- Starting Nmap 7.95 ( https://nmap.org ) at 2026-01-14 15:11 EST  
- Nmap scan report for 10.10.10.10 
- 
+sudo nmap -sC -sV  -p- $IP --open            
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-01-14 15:11 EST  
+Nmap scan report for 10.10.10.10  
 ```
- <div style="margin: 2rem 0;"></div>
 
+
+---
 
 ## Speeding Up Enumeration with Custom Functions
 Enumeration is one of the most time-consuming steps. Instead of configuring the options and running each tool manually every time, simply define a function in your .zshrc file. These functions assume you have already defined a target IP using the IP variable, as shown in the previous section.
 
 Here’s a simple example for nmap:
-```bash
- 
+```bash 
  qnmap() {
   sudo nmap -sC -sV  -p- $IP --open   
-  }
-  
+  }  
 ```
- <div style="margin: 1rem 0;"></div>
+
 Here's another example, this time for feroxbuster:
 ```bash
-
- qferox() {
-   feroxbuster --url http://$IP  -t 50 -E -B -g    
-   }
-
+qferox() {
+  feroxbuster --url http://$IP  -t 50 -E -B -g    
+    }
 ```
+
+---
+
 ## Expanding on the Basics
 With the basics in place, we can expand on the ideas previously shown by using functions to define and manage targets, chain multiple enumeration commands and create organized output files.
 
 ### Creating a Function to Define the Target 
 At this point, manually exporting the target IP works well, but it still requires editing your .zshrc configuration after every engagement. With this function, we can streamline this even further by dynamically setting the target IP on demand.
 ```bash
-
- setip() {
-  sed -i '/^export IP=/d' ~/.zshrc
-  echo "Target IP set to $IP"
-  echo "export IP=$1" >> ~/.zshrc
-  export IP=$1
-  echo "Target set to $IP"
+setip() {
+ sed -i '/^export IP=/d' ~/.zshrc
+ echo "Target IP set to $IP"
+ echo "export IP=$1" >> ~/.zshrc
+ export IP=$1
+ echo "Target set to $IP"
 }
-
 ```
- <div style="margin: 1rem 0;"></div>
+
  Now you can run `setip 10.10.10.10` instead of modifying your.zshrc file.
  
 ```bash
-
  $ setip 10.10.10.10
   Target IP set to 10.10.10.10   
  $ echo $IP                   
   10.10.10.10
-
 ```
 
 
@@ -92,7 +86,6 @@ At this point, manually exporting the target IP works well, but it still require
 ### Combining Enumeration Commands With Custom Functions
 The real benefit of functions comes from chaining multiple commands together. Instead of manually launching several directory scans one after another, you can bundle them into a single function and view the results in one readable output file. Keep in mind, this function assumes you are on Kali Linux and have seclists installed in the default path, and may take 5+ minutes to complete.
 ```bash
-
  qdirb() {
    OUTPUT="dir-enum.txt"
    TEMP="dir-enum-temp.txt"
@@ -136,8 +129,9 @@ The real benefit of functions comes from chaining multiple commands together. In
 
    echo "[+] Enumeration complete — results saved to $OUTPUT"
 }
-
 ```
+
+---
 
 ## Avoiding Common Issues
 

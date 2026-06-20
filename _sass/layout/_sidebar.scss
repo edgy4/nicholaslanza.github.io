@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SIDEBAR
+   SIDEBAR (MODERNIZED & FLOATING)
    ========================================================================== */
 
 /*
@@ -18,10 +18,12 @@
   }
 
   @media screen and (min-width: $sidebar-screen-min-width) {
-    height: 100vh;
-    overflow-y: auto;               // Add scrollbar if the sidebar is too long
-    position: fixed;
-    padding-top: $masthead-height;
+    /* Softened: Changed from a rigid 100vh fixed column to a natural sticky float */
+    position: -webkit-sticky;
+    position: sticky;
+    top: calc(#{$masthead-height} + 2rem);
+    padding-right: 1.5rem; 
+    z-index: 10;
   }
 
   @include breakpoint($large) {
@@ -78,22 +80,27 @@
 
 
 /*
-   Table of contents
+   Table of contents (Sleek & Boxless)
    ========================================================================== */
 
 .toc {
-  background-color: var(--global-toc-bg-color);
-  border: 1px solid var(--global-border-color);
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-  padding: 1em;
+  background-color: transparent; 
+  border: none;
+  border-left: 2px solid var(--global-border-color); /* Sleek tracking line */
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0 0 0 1em; /* Only pad the left side */
 
   .nav__title {
     color: var(--global-text-color);
     font-size: $type-size-6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
     background: transparent;
     border: 0;
     padding: 0;
+    margin-bottom: 0.5rem;
   }
 
   .toc__menu {
@@ -106,19 +113,22 @@
     a {
       display: block;
       padding: 0.25rem 0;
-      color: var(--global-text-color);
+      color: var(--global-text-color-light); 
       font-size: $type-size-7;
       font-weight: normal;
       line-height: 1.5;
       border-bottom: 0;
+      transition: all 0.2s ease;
 
       &:hover {
-        text-decoration: underline;
+        text-decoration: none; 
+        color: var(--global-link-color); 
+        transform: translateX(4px); /* Subtle nudge effect */
       }
     }
 
     > li > a {
-      font-weight: bold;
+      font-weight: 600;
     }
 
     li ul > li a {
@@ -137,29 +147,35 @@
 }
 
 /*
-   Author profile and links
+   Author profile and links (Centered & Floating)
    ========================================================================== */
 
 .author__avatar {
   display: table-cell;
   vertical-align: top;
   width: 36px;
-  // set width only, for non-square avatars
-  // height: 36px;
 
   @include breakpoint($large) {
     display: block;
     width: auto;
     height: auto;
+    text-align: center; /* Softened: Center the avatar wrapper */
   }
 
   img {
-    max-width: 175px;
+    max-width: 150px; /* Slightly scaled down to look better centered */
+    margin: 0 auto; /* Softened: Center the image */
+    display: block;
     border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     @include breakpoint($large) {
-      padding: 5px;
-      border: 1px solid var(--global-border-color);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
     }
   }
 }
@@ -176,17 +192,21 @@
     width: 100%;
     padding-left: 0;
     padding-right: 0;
+    text-align: center; /* Softened: Center the name and bio */
   }
 }
 
 .author__name {
   margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 
   @include breakpoint($large) {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 5px;
   }
 }
+
 .sidebar .author__name {
   font-family: $sans-serif;
   font-size: $type-size-5;
@@ -203,16 +223,17 @@
   margin: 0;
 
   @include breakpoint($large) {
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 10px;
   }
 }
 
 .author__bio {
   margin: 0;
+  color: var(--global-text-color-light); 
 
   @include breakpoint($large) {
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 20px;
   }
 }
@@ -223,7 +244,6 @@
   vertical-align: middle;
   font-family: $sans-serif;
   z-index: 10;
-  position: relative;
   cursor: pointer;
 
   li:last-child {
@@ -234,6 +254,7 @@
 
   @include breakpoint($large) {
     display: block;
+    text-align: center; /* Softened: Centers the link block under the bio */
   }
 
   button {
@@ -260,44 +281,17 @@
   cursor: default;
 
   @include breakpoint($large) {
-    display: block;
+    display: inline-block; /* Allows the block to be centered by the wrapper */
+    text-align: left; /* Keeps the icons and text flush with each other */
     position: relative;
-    margin: 0;
+    margin: 0 auto; 
     padding: 0;
     border: 0;
     background: transparent;
     box-shadow: none;
   }
 
-  &:before {
-    display: block;
-    content: "";
-    position: absolute;
-    top: -11px;
-    left: calc(50% - 10px);
-    width: 0;
-    border-style: solid;
-    border-width: 0 10px 10px;
-    border-color: var(--global-border-color) transparent;
-    z-index: 0;
-
-    @include breakpoint($large) {
-      display: none;
-    }
-  }
-
-  &:after {
-    display: block;
-    content: "";
-    position: absolute;
-    top: -10px;
-    left: calc(50% - 10px);
-    width: 0;
-    border-style: solid;
-    border-width: 0 10px 10px;
-    border-color: #fff transparent;
-    z-index: 1;
-
+  &:before, &:after {
     @include breakpoint($large) {
       display: none;
     }
@@ -305,20 +299,21 @@
 
   li {
     white-space: nowrap;
+    margin-bottom: 0.25rem; 
   }
 
   a {
     display: block;
-    margin-bottom: 5px;
-    padding-right: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    color: inherit;
-    font-size: $type-size-5;
+    padding: 0.25rem 0;
+    color: var(--global-text-color-light); 
+    font-size: $type-size-6;
     text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: none; 
+      color: var(--global-link-color); 
+      transform: translateX(3px); 
     }
   }
 }
