@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 'Martini AD Write-Up - Hack Smarter'
+title: 'Martini AD Write Up - Hack Smarter'
 collection: writeups
 author_profile: true
 date: 2026-06-17
