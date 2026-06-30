@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 'Pollution Write-Up - Hack Smarter'
+title: 'Pollution Write Up - Hack Smarter'
 collection: writeups
 author_profile: true
 date: 2026-01-29
