@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 'ShadowGate Write-Up - Hack Smarter'
+title: 'ShadowGate Write Up - Hack Smarter'
 collection: writeups
 author_profile: true
 date: 2026-05-20
