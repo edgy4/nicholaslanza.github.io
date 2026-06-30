@@ -10,6 +10,9 @@ tags: [Hack Smarter, Medium, AD, RBCD ]
 
 ## Overview
 This write-up covers "Past," a medium-level Active Directory machine hosted on the Hack Smarter platform. This CTF is excellent practice for improving upon your Active Directory skills after the OSCP, as it features a complex delegation attack path and an uncommon, machine account exploitation vector. Which are both, to my knowledge, out of scope for the OSCP. If you get stuck or have any questions while working through the machine, don't hesitate to send me an email.
+[https://www.hacksmarter.org/courses/e3a8e3b6-448e-4388-9832-ae1da184293e](https://www.hacksmarter.org/courses/e3a8e3b6-448e-4388-9832-ae1da184293e) 
+![past](/images/past/past.png)
+
 
 ----
 
