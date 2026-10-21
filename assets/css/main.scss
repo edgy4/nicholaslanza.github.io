@@ -28,65 +28,68 @@
     "layout/archive",
     "layout/sidebar",
     "layout/json_cv",
+    "layout/writeup",
     "vendor/font-awesome/fontawesome",
     "vendor/font-awesome/solid",
     "vendor/font-awesome/brands";
 
 /* ==========================================================================
-   Paragraph text smaller for writeups/posts
+   Typography
    ========================================================================== */
 
-/* Shrink paragraph text in posts/writeups */
-.page__content p {
-  font-size: .875em !important;   /* 87.5% of normal size */
-  line-height: 1.6 !important;     /* improves readability */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* Shrink all bullet points site-wide */
-ul li,
-ol li {
-  font-size: 0.875em !important;   /* match paragraph text size */
-  line-height: 1.6 !important;     /* keeps spacing readable */
-  margin-bottom: 0.5em;            /* optional: spacing between bullets */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
-/* Terminal-style metadata container for single layout */
-.terminal-header {
-  border: 1px solid rgba(0, 255, 153, 0.25);
-  border-radius: 8px;
-  background: linear-gradient(180deg, rgba(10, 14, 12, 0.95), rgba(10, 14, 12, 0.85));
-  box-shadow: inset 0 0 0 1px rgba(255, 191, 0, 0.08);
-  padding: 1rem 1.2rem;
-  margin-bottom: 1rem;
-}
-
-.terminal-header .page__title,
-.terminal-header .page__meta,
-.terminal-header .page__date,
-.terminal-header .terminal-meta {
-  font-family: "Roboto Mono", "Courier New", monospace;
-}
-
-.terminal-header .terminal-meta-line {
-  margin: 0.35rem 0;
-}
-
-.terminal-header .terminal-stamp {
-  color: #00ff99;
+.page__title {
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
-.terminal-header .terminal-label {
-  color: #ffbf00;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+/* Body copy: one size for paragraphs and lists, capped at a readable measure.
+   Code blocks and images keep the full column width. */
+.page__content {
+  font-size: 0.95rem;
+  line-height: 1.7;
+
+  p,
+  li {
+    font-size: 1em;
+  }
+
+  > p,
+  > ul,
+  > ol,
+  > blockquote {
+    max-width: 72ch;
+  }
+
+  li {
+    margin-bottom: 0.35em;
+  }
+
+  /* Long bare URLs would otherwise push the page wider than a phone screen */
+  p,
+  li {
+    overflow-wrap: anywhere;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
 }
 
-.page__meta .page__taxonomy,
-.page__meta .page__taxonomy * {
-  font-family: "Roboto Mono", "Courier New", monospace;
+/* Screenshots sit on a frame instead of floating on the page background */
+.page__content img {
+  border: 1px solid var(--global-border-color);
+  border-radius: 6px;
 }
-
-

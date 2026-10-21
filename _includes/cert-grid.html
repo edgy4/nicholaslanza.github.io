@@ -1,0 +1,25 @@
+{% comment %}
+Credential cards for the certifications page. Data: _data/certifications.yml
+Optional per entry: verify_url (shown as a "Verify credential" link).
+{% endcomment %}
+
+<ul class="cert-grid">
+  {% for cert in site.data.certifications %}
+  <li class="cert-card">
+    <a class="cert-card__image" href="{{ cert.image }}" target="_blank" rel="noopener">
+      <img src="{{ cert.image }}" alt="{{ cert.full_name }} certificate issued to {{ site.author.name }}" loading="lazy">
+    </a>
+    <div class="cert-card__body">
+      <h2 class="cert-card__name">{{ cert.name }}</h2>
+      <p class="cert-card__full-name">{{ cert.full_name }}</p>
+      <dl class="cert-card__facts">
+        <div><dt>Issuer</dt><dd>{{ cert.issuer }}</dd></div>
+        <div><dt>Earned</dt><dd>{{ cert.earned }}</dd></div>
+      </dl>
+      {% if cert.verify_url %}
+      <a class="cert-card__verify" href="{{ cert.verify_url }}" target="_blank" rel="noopener">Verify credential</a>
+      {% endif %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>

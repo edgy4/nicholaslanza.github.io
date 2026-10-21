@@ -1,0 +1,13 @@
+{% comment %}
+Tag chips linking to the tag archive. Usage: {% include tag-chips.html tags=page.tags %}
+{% endcomment %}
+{% if include.tags and include.tags != empty %}
+<ul class="tag-chips" aria-label="Tags">
+  {% for tag in include.tags %}
+    {% assign tag_slug = tag | slugify %}
+    {% if tag_slug != '' and tag_slug != 'writeups' %}
+    <li><a class="tag-chip" href="{{ '/tags/#' | append: tag_slug | relative_url }}" rel="tag">{{ tag | strip }}</a></li>
+    {% endif %}
+  {% endfor %}
+</ul>
+{% endif %}

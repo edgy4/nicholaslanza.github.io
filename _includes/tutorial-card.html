@@ -1,0 +1,58 @@
+{% comment %}
+Summary shown at the top of a tutorial; shares its styling with the write-up box card.
+Front matter: tool, tool_url, covers (list), tags.
+{% endcomment %}
+
+<aside class="box-card box-card--tutorial" aria-label="Tutorial summary">
+  <div class="box-card__header">
+    <div class="box-card__identity">
+      <span class="difficulty-badge">Tutorial</span>
+      <span class="box-card__platform">{{ page.tool }}</span>
+    </div>
+    {% if page.tool_url %}
+    <a class="box-card__link" href="{{ page.tool_url }}" target="_blank" rel="noopener">
+      Visit {{ page.tool }}<span class="sr-only"> (opens in a new tab)</span>
+      <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+    </a>
+    {% endif %}
+  </div>
+
+  <dl class="box-card__body">
+    <div class="box-card__fact">
+      <dt>Tool</dt>
+      <dd>{{ page.tool }}</dd>
+    </div>
+    {% if page.date %}
+    <div class="box-card__fact">
+      <dt>Published</dt>
+      <dd><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></dd>
+    </div>
+    {% endif %}
+    <div class="box-card__fact">
+      <dt>Reading time</dt>
+      {% assign words = page.content | strip_html | number_of_words %}
+      {% assign minutes = words | divided_by: site.words_per_minute | at_least: 1 %}
+      <dd>{{ minutes }} min</dd>
+    </div>
+
+    {% if page.covers and page.covers != empty %}
+    <div class="box-card__row">
+      <dt>Covers</dt>
+      <dd>
+        <ul class="box-card__techniques">
+          {% for item in page.covers %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+      </dd>
+    </div>
+    {% endif %}
+
+    {% if page.tags and page.tags != empty %}
+    <div class="box-card__row">
+      <dt>Tags</dt>
+      <dd>
+        {% include tag-chips.html tags=page.tags %}
+      </dd>
+    </div>
+    {% endif %}
+  </dl>
+</aside>

@@ -1,0 +1,62 @@
+{% comment %}
+Box summary shown at the top of a write-up.
+Front matter: platform, difficulty, target, focus (list), box_url, tags.
+{% endcomment %}
+
+{% assign difficulty_slug = page.difficulty | slugify %}
+{% assign box_name = page.title | split: ' Write Up' | first | strip %}
+<aside class="box-card difficulty--{{ difficulty_slug }}" aria-label="Box summary">
+  <div class="box-card__header">
+    <div class="box-card__identity">
+      {% if page.difficulty %}<span class="difficulty-badge difficulty--{{ difficulty_slug }}">{{ page.difficulty }}</span>{% endif %}
+      <span class="box-card__platform">{{ page.platform }}</span>
+    </div>
+    {% if page.box_url %}
+    <a class="box-card__link" href="{{ page.box_url }}" target="_blank" rel="noopener">
+      View {{ box_name }}<span class="sr-only"> on {{ page.platform }} (opens in a new tab)</span>
+      <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+    </a>
+    {% endif %}
+  </div>
+
+  <dl class="box-card__body">
+    {% if page.target %}
+    <div class="box-card__fact">
+      <dt>Target</dt>
+      <dd>{{ page.target }}</dd>
+    </div>
+    {% endif %}
+    {% if page.date %}
+    <div class="box-card__fact">
+      <dt>Published</dt>
+      <dd><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></dd>
+    </div>
+    {% endif %}
+    <div class="box-card__fact">
+      <dt>Reading time</dt>
+      {% assign words = page.content | strip_html | number_of_words %}
+      {% assign minutes = words | divided_by: site.words_per_minute | at_least: 1 %}
+      <dd>{{ minutes }} min</dd>
+    </div>
+
+    {% if page.focus and page.focus != empty %}
+    <div class="box-card__row">
+      <dt>Techniques</dt>
+      <dd>
+        <ul class="box-card__techniques">
+          {% for item in page.focus %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+      </dd>
+    </div>
+    {% endif %}
+
+    {% if page.tags and page.tags != empty %}
+    <div class="box-card__row">
+      <dt>Tags</dt>
+      <dd>
+        {% include tag-chips.html tags=page.tags %}
+      </dd>
+    </div>
+    {% endif %}
+  </dl>
+</aside>

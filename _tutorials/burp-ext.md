@@ -1,11 +1,16 @@
 ---
 layout: single
 title: "Enhancing Burp Suite with Extensions"
-collection: teaching
+collection: tutorials
 date: 2026-06-10
-categories: teaching
-permalink: /teaching/burp-ext/
+permalink: /tutorials/burp-ext/
+redirect_from:
+  - /teaching/burp-ext/
 tags: [Burp, tutorials]
+description: "Installing extensions from the BApp Store and putting three of them to work so less of your workflow lives outside Burp."
+tool: Burp Suite
+tool_url: https://portswigger.net/burp
+covers: [BApp Store, Param Miner, JWT Editor, Turbo Intruder]
 ---
 
 # Overview

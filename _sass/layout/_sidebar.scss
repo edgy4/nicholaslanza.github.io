@@ -9,6 +9,9 @@
 .sidebar {
   -webkit-transform: translate3d(0, 0 , 0);
           transform: translate3d(0, 0 , 0);
+  /* Own stacking layer so the mobile "Follow" menu opens above the article */
+  position: relative;
+  z-index: 20;
 
   @include clearfix();
   margin-bottom: 1em;
@@ -27,7 +30,7 @@
   }
 
   @include breakpoint($large) {
-    @include span(2 of 12);
+    @include span(3 of 12);
     opacity: 1;
     -webkit-transition: opacity 0.2s ease-in-out;
             transition: opacity 0.2s ease-in-out;
@@ -38,7 +41,7 @@
   }
 
   @include breakpoint($x-large) {
-    max-width: $sidebar-link-max-width;
+    max-width: 280px;
     padding-right: 0;
   }
 
@@ -163,20 +166,16 @@
   }
 
   img {
-    max-width: 150px; /* Slightly scaled down to look better centered */
-    margin: 0 auto; /* Softened: Center the image */
     display: block;
+    width: 100%;
+    max-width: 140px;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    border: 3px solid var(--global-surface-color);
     border-radius: 50%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-    @include breakpoint($large) {
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-    }
+    box-shadow: 0 0 0 1px var(--global-border-color);
+    object-fit: cover;
+    object-position: center 20%;
   }
 }
 
@@ -274,9 +273,9 @@
   padding: 10px;
   list-style-type: none;
   border: 1px solid var(--global-border-color);
-  border-radius: $border-radius;
-  background: var(--global-bg-color);
-  z-index: -1;
+  border-radius: 8px;
+  background: var(--global-surface-color);
+  z-index: 30;
   box-shadow: 0 0 10px rgba(#000, 0.25);
   cursor: default;
 
@@ -298,22 +297,61 @@
   }
 
   li {
+    margin: 0;
+    font-size: 0.85rem;
     white-space: nowrap;
-    margin-bottom: 0.25rem; 
+  }
+
+  /* Keep the address on one line; the column is narrowest between $large and $x-large */
+  .author__email {
+    white-space: nowrap;
+  }
+
+  @media (min-width: $large) and (max-width: #{$x-large - 1px}) {
+    a[href^="mailto:"] {
+      padding-inline: 0.3rem;
+      font-size: 0.78rem;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  /* Location is plain text; give it the same rhythm as the links */
+  li.author__desktop {
+    padding: 0.4rem 0.6rem;
+    color: var(--global-text-color);
   }
 
   a {
-    display: block;
-    padding: 0.25rem 0;
-    color: var(--global-text-color-light); 
-    font-size: $type-size-6;
+    display: flex;
+    align-items: center;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    color: var(--global-text-color-light);
+    font-size: inherit;
     text-decoration: none;
-    transition: color 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.15s, color 0.15s;
 
-    &:hover {
-      text-decoration: none; 
-      color: var(--global-link-color); 
-      transform: translateX(3px); 
+    &:hover,
+    &:focus-visible {
+      background: var(--global-surface-color);
+      color: var(--global-link-color);
+      text-decoration: none;
     }
+  }
+
+  /* .social-icons gives each brand its own colour; keep the sidebar to one accent */
+  &.social-icons i {
+    width: 1.25em;
+    margin-right: 0.65em;
+    padding-right: 0;
+    color: var(--global-base-color);
+    text-align: center;
+  }
+
+  @include breakpoint($large) {
+    width: 100%;
+    margin-top: 0.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--global-border-color);
   }
 }

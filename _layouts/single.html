@@ -43,6 +43,11 @@ layout: default
             <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}
 
+          {% if page.platform %}
+            {% include writeup-card.html %}
+          {% elsif page.tool %}
+            {% include tutorial-card.html %}
+          {% else %}
           {% if page.date %}
             <p class="page__date">
               <strong><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> Published:</strong>
@@ -58,35 +63,13 @@ layout: default
           <div class="page__taxonomy-top" style="margin-top: 0.5rem; margin-bottom: 2rem;">
             {% include page__taxonomy.html %}
           </div>
+          {% endif %}
 
         </header>
       {% endunless %}
 
       <section class="page__content" itemprop="text">
         {{ content }}
-
-        {% comment %} Citation / downloads section {% endcomment %}
-        {% if page.citation and page.paperurl and page.slidesurl and page.bibtexurl %}
-          <p style="font-size: smaller">
-            Recommended citation: {{ page.citation }}<br />
-            <a href="{{ page.paperurl }}">Download Paper</a> |
-            <a href="{{ page.slidesurl }}">Download Slides</a> |
-            <a href="{{ page.bibtexurl }}">Download Bibtex</a>
-          </p>
-        {% elsif page.citation and page.paperurl and page.slidesurl %}
-          <p style="font-size: smaller">
-            Recommended citation: {{ page.citation }}<br />
-            <a href="{{ page.paperurl }}">Download Paper</a> |
-            <a href="{{ page.slidesurl }}">Download Slides</a>
-          </p>
-        {% elsif page.citation and page.paperurl %}
-          <p style="font-size: smaller">
-            Recommended citation: {{ page.citation }}<br />
-            <a href="{{ page.paperurl }}">Download Paper</a>
-          </p>
-        {% elsif page.citation %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}</p>
-        {% endif %}
 
         {% if page.link %}
           <div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>
@@ -97,7 +80,7 @@ layout: default
         {% if site.data.ui-text[site.locale].meta_label %}
           <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
         {% endif %}
-        {% include page__taxonomy.html %}
+        {% unless page.platform or page.tool %}{% include page__taxonomy.html %}{% endunless %}
       </footer>
 
       {% if page.share %}

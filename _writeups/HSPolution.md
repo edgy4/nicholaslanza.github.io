@@ -6,6 +6,11 @@ author_profile: true
 date: 2026-01-29
 permalink: /writeups/pollution/
 tags: [Hack Smarter, Easy, cookie hijacking, XSS, Web]
+platform: Hack Smarter
+difficulty: Easy
+target: Web app
+focus: [Prototype pollution, XSS, Session hijacking]
+box_url: https://www.hacksmarter.org/courses/1de73367-b278-41ba-a63c-83c2d510621c
 ---
 
 ## Overview

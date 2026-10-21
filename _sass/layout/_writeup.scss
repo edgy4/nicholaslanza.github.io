@@ -1,0 +1,460 @@
+/* ==========================================================================
+   WRITE-UPS: box card, difficulty badges and archive rows
+   ========================================================================== */
+
+/* Difficulty colours come from the Dracula palette in dark mode and are
+   earthy, darker tones in light mode so they keep contrast on parchment. */
+:root,
+html[data-theme="light"] {
+  /* Earthy tones that sit on parchment; hard is a darker red than the crimson accent */
+  --difficulty-easy: #4f7a33;
+  --difficulty-medium: #a6561c;
+  --difficulty-hard: #8c1c1c;
+  --difficulty-insane: #6e4a7e;
+}
+
+html[data-theme="dark"] {
+  --difficulty-easy: #50fa7b;
+  --difficulty-medium: #ffb86c;
+  --difficulty-hard: #ff5555;
+  --difficulty-insane: #bd93f9;
+}
+
+.difficulty--easy   { --difficulty: var(--difficulty-easy); }
+.difficulty--medium { --difficulty: var(--difficulty-medium); }
+.difficulty--hard   { --difficulty: var(--difficulty-hard); }
+.difficulty--insane { --difficulty: var(--difficulty-insane); }
+.box-card--tutorial { --difficulty: var(--global-base-color); }
+
+.difficulty-badge {
+  display: inline-block;
+  padding: 0.1em 0.6em;
+  border: 1px solid var(--difficulty, var(--global-border-color));
+  border-radius: 999px;
+  color: var(--difficulty, var(--global-text-color));
+  font-size: 0.85em;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Box card at the top of a write-up */
+.box-card {
+  margin: 0 0 1rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+  background: var(--global-surface-color);
+  font-size: 0.9rem;
+  overflow: hidden;
+}
+
+/* Header strip carries the box identity, tinted by difficulty */
+.box-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--global-border-color);
+  border-top: 3px solid var(--difficulty, var(--global-base-color));
+  background: color-mix(in srgb, var(--difficulty, var(--global-base-color)) 7%, var(--global-surface-color));
+}
+
+.box-card__identity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.box-card__platform {
+  font-weight: 600;
+}
+
+.box-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 6px;
+  background: var(--global-surface-color);
+  color: var(--global-text-color);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+
+  i {
+    font-size: 0.75em;
+    opacity: 0.7;
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--global-link-color);
+    color: var(--global-link-color);
+  }
+}
+
+.box-card__body {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  margin: 0;
+  padding: 1.1rem 1.25rem 1.25rem;
+
+  dt {
+    margin: 0 0 0.2rem;
+    color: var(--global-text-color-light);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  dd {
+    margin: 0;
+    font-weight: 600;
+  }
+}
+
+/* Full-width rows: label on the left, list on the right */
+.box-card__row {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: 6.5rem 1fr;
+  align-items: baseline;
+  padding-top: 1rem;
+  border-top: 1px solid var(--global-border-color);
+
+  & + & {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  dd {
+    font-weight: 400;
+  }
+}
+
+.box-card__techniques {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+    padding: 0.1em 0.6em;
+    border: 1px solid var(--global-border-color);
+    border-radius: 4px;
+    background: var(--global-bg-color);
+    font-family: $monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+}
+
+/* ==========================================================================
+   TAG CHIPS (box card, archive rows, post footers, tags page)
+   ========================================================================== */
+
+ul.tag-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+}
+
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35em 0.7em;
+  border: 1px solid var(--tag-border);
+  border-radius: 999px;
+  background: var(--tag-bg);
+  color: var(--tag-text) !important;
+  font-family: $global-font-family;
+  font-size: 1em;
+  font-weight: 500;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: background-color 0.15s, border-color 0.15s;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--global-link-color);
+    background: var(--tag-bg-hover);
+  }
+}
+
+.tag-chip__count {
+  color: var(--global-text-color-light);
+  font-size: 0.85em;
+  font-variant-numeric: tabular-nums;
+}
+
+.page__meta .page__taxonomy {
+  margin-top: 2rem;
+}
+
+@include breakpoint(max-width $small) {
+  .box-card__body {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .box-card__row {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}
+
+/* The card already separates the header from the body */
+header + .page__content > h1:first-child,
+header + .page__content > h2:first-child {
+  margin-top: 1.5rem;
+}
+
+/* Write-up and tutorial archive rows */
+.archive-row {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--global-border-color);
+
+  &:first-of-type {
+    padding-top: 0.5rem;
+  }
+}
+
+.archive-row__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.9rem;
+  margin: 0 0 0.4rem;
+  color: var(--global-text-color-light);
+  font-size: 0.8rem;
+}
+
+.archive-row__title {
+  margin: 0 0 0.4rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+
+  a {
+    color: var(--global-text-color);
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--global-link-color);
+    }
+  }
+}
+
+.archive-row__tags {
+  margin-top: 0.75rem;
+}
+
+.archive-row__description {
+  max-width: 72ch;
+  margin: 0 0 0.6rem;
+  color: var(--global-text-color-light);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Title and intro at the top of the write-up and tutorial indexes */
+.archive-header {
+  margin: 0 0 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+.archive-header__title {
+  margin: 0 0 0.4rem;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.archive-header__intro {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--global-text-color-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   CERTIFICATIONS
+   ========================================================================== */
+
+.page__content .cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: 1.5rem;
+  max-width: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page__content .cert-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+  background: var(--global-surface-color);
+  overflow: hidden;
+}
+
+.cert-card__image {
+  display: block;
+  border-bottom: 1px solid var(--global-border-color);
+  background: var(--global-bg-color);
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    transition: opacity 0.15s;
+  }
+
+  &:hover img,
+  &:focus-visible img {
+    opacity: 0.88;
+  }
+}
+
+.cert-card__body {
+  padding: 1rem 1.25rem 1.2rem;
+}
+
+.page__content h2.cert-card__name {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.page__content p.cert-card__full-name {
+  margin: 0.1rem 0 0.9rem;
+  color: var(--global-text-color-light);
+  font-size: 0.9rem;
+}
+
+.cert-card__facts {
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--global-border-color);
+  font-size: 0.85rem;
+
+  dt {
+    margin: 0;
+    color: var(--global-text-color-light);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  dd {
+    margin: 0;
+    font-family: $global-font-family;
+    font-size: 1em;
+    font-weight: 600;
+  }
+}
+
+.cert-card__verify {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   TAGS PAGE
+   ========================================================================== */
+
+.page__content p.tag-index__intro {
+  margin-bottom: 1rem;
+  color: var(--global-text-color-light);
+}
+
+.tag-index__menu {
+  margin: 0 0 2rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+  background: var(--global-surface-color);
+}
+
+.tag-index__reset {
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.tag-section {
+  margin-bottom: 2rem;
+  scroll-margin-top: calc(#{$masthead-height} + 1rem);
+}
+
+.page__content h2.tag-section__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.page__content ul.tag-section__posts {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    margin: 0;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--global-border-color);
+  }
+
+  a {
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
+    }
+  }
+}
+
+.tag-section__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--global-text-color-light);
+  font-size: 0.8rem;
+}

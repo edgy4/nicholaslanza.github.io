@@ -6,6 +6,11 @@ author_profile: true
 date: 2026-06-29
 permalink: /writeups/past/
 tags: [Hack Smarter, Medium, AD, RBCD ]
+platform: Hack Smarter
+difficulty: Medium
+target: Active Directory
+focus: [RBCD, Machine account abuse]
+box_url: https://www.hacksmarter.org/courses/e3a8e3b6-448e-4388-9832-ae1da184293e
 ---
 
 ## Overview

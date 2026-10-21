@@ -38,6 +38,28 @@ $sidebar-screen-min-width   : 1024px;
 html[data-theme="dark"] {
   /* Midnight Slate (Slightly lighter/grayer than the code boxes for depth) */
   --global-bg-color: #1e1f29; 
+  --global-surface-color: #282a36;
+
+  /* Code: Dracula */
+  --code-bg: #282a36;
+  --code-border: #44475a;
+  --code-text: #f8f8f2;
+  --code-comment: #6272a4;
+  --code-keyword: #ff79c6;
+  --code-string: #f1fa8c;
+  --code-number: #bd93f9;
+  --code-function: #50fa7b;
+  --code-variable: #8be9fd;
+  --code-error: #ff5555;
+  --code-badge-bg: #44475a;
+  --code-badge-text: #8b95c0;
+  --code-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+
+  /* Tags */
+  --tag-bg: rgba(189, 147, 249, 0.1);
+  --tag-border: rgba(189, 147, 249, 0.28);
+  --tag-text: #d6c2fb;
+  --tag-bg-hover: rgba(189, 147, 249, 0.2);
   --global-footer-bg-color: #15161e; 
   
   /* Your code boxes remain Dracula Slate (#282a36) */
@@ -58,6 +80,8 @@ html[data-theme="dark"] {
   --global-link-color: #ff79c6;
   --global-link-color-hover: #8be9fd;
   --global-link-color-visited: #bd93f9;
-  --global-masthead-bg-color: #1e1f29; /* A slightly darker shade than your #1e1f29 bg */
+  --global-masthead-bg-color: #1e1f29;
+  --global-masthead-link-color: #ff79c6;
+  --global-masthead-link-color-hover: #8be9fd; /* A slightly darker shade than your #1e1f29 bg */
 }
 

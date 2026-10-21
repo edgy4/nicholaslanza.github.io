@@ -6,6 +6,11 @@ author_profile: true
 date: 2026-05-20
 permalink: /writeups/shadowgate/
 tags: [Hack Smarter, Easy, AD, cert, ASREP]
+platform: Hack Smarter
+difficulty: Easy
+target: Active Directory
+focus: [AS-REP roasting, ADCS, Certipy]
+box_url: https://www.hacksmarter.org/courses/df65d37c-ed63-4eca-8f78-5dede200ec8e
 ---
 
 ## Overview

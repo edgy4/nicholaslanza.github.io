@@ -6,6 +6,11 @@ author_profile: true
 date: 2026-01-01
 permalink: /writeups/loly/
 tags: [Proving Grounds, Medium, Linux, Wordpress]
+platform: Proving Grounds
+difficulty: Medium
+target: Linux
+focus: [WordPress, Kernel exploit]
+box_url: https://portal.offsec.com/machine/loly-532/overview/details
 ---
 
 ## Overview

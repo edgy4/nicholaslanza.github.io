@@ -1,5 +1,8 @@
 {
-	"name": "OOjs UI icon academic-progressive",
+	"name": "Nicholas Lanza",
+	"short_name": "N. Lanza",
+	"theme_color": "#1e1f29",
+	"background_color": "#1e1f29",
 	"icons": [
 		{
 			"src": "/images/favicon-192x192.png",

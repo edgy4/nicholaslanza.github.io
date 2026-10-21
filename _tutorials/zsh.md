@@ -1,11 +1,16 @@
 ---
 layout: single
 title: "Saving Time on Engagements With ZSH Automation"
-collection: teaching
-categories: teaching
+collection: tutorials
 date: 2026-01-01
-permalink: /teaching/zsh-workflow/
+permalink: /tutorials/zsh-workflow/
+redirect_from:
+  - /teaching/zsh-workflow/
 tags: [zsh, tutorials]
+description: "Small .zshrc customizations that cut down on retyping target IPs, scans and other repetitive commands during an engagement."
+tool: Zsh
+tool_url: https://www.zsh.org/
+covers: [.zshrc, Target variables, Custom functions, Enumeration automation]
 ---
 
 ## Overview

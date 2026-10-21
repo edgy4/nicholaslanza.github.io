@@ -6,6 +6,11 @@ author_profile: true
 date: 2026-04-28
 permalink: /writeups/billyboss/
 tags: [Proving Grounds, Medium, Windows, SeImpersonate]
+platform: Proving Grounds
+difficulty: Medium
+target: Windows
+focus: [SeImpersonate]
+box_url: https://portal.offsec.com/machine/billyboss-259/overview/details
 ---
 
 ## Overview

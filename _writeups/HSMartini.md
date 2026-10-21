@@ -6,6 +6,11 @@ author_profile: true
 date: 2026-06-17
 permalink: /writeups/martini/
 tags: [Hack Smarter, Easy, AD, ]
+platform: Hack Smarter
+difficulty: Easy
+target: Active Directory
+focus: [Credential hunting, Password reuse]
+box_url: https://www.hacksmarter.org/courses/8da0b008-7692-4c3f-a861-b7a02a536e7b
 ---
 
 ## Overview

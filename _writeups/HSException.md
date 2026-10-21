@@ -5,7 +5,12 @@ collection: writeups
 author_profile: true
 date: 2026-04-22
 permalink: /writeups/exception/
-tags: [HackSmarter, Medium, Linux, API, JS, Sudo,]
+tags: [Hack Smarter, Medium, Linux, API, JS, Sudo,]
+platform: Hack Smarter
+difficulty: Medium
+target: Linux
+focus: [Web app assessment, API abuse, JavaScript, Sudo]
+box_url: https://www.hacksmarter.org/courses/df65d37c-ed63-4eca-8f78-5dede200ec8e
 ---
 
 ## Overview

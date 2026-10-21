@@ -24,14 +24,14 @@
     nav { 
       z-index: 10; 
       
-      /* Make navigation text the Dracula Pink */
-      a { 
+      /* Theme-controlled: Dracula pink in dark mode, signal red in light */
+      a {
         text-decoration: none;
-        color: var(--global-link-color); 
+        color: var(--global-masthead-link-color);
         font-weight: 600;
-        
+
         &:hover {
-          color: var(--global-link-color-hover);
+          color: var(--global-masthead-link-color-hover);
         }
       }
     }

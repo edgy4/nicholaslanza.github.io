@@ -30,31 +30,55 @@ $masthead-height            : 70px;
 
 /* Default light theme for the site */
 :root, html[data-theme="light"] {
-  /* Backgrounds: Keeping the grey you liked */
-  --global-bg-color: #d1d5db; 
-  --global-footer-bg-color: #b9bec6; 
-  --global-code-background-color: #282a36; 
-  
-  /* Masthead: Keeping the tone uniform */
-  --global-masthead-bg-color: #d1d5db; 
-  --global-masthead-link-color: #1a3542; 
-  --global-masthead-hover-bg: #97a3b2; 
-  
-  /* Text: Deep Slate */
-  --global-text-color: #1f2937; 
-  --global-text-color-light: #4b5563; 
-  --global-code-text-color: #f8f8f2; 
-  
+  /* Parchment & Crimson: warm parchment page, ink-brown text, deep crimson accents.
+     Red is kept to links, icons and tags so long write-ups stay calm to read. */
+  --global-bg-color: #f3ede2;
+  --global-surface-color: #faf6ee;
+  --global-footer-bg-color: #ebe3d5;
+  --global-code-background-color: #ece3d3;
+
+  /* Masthead */
+  --global-masthead-bg-color: #f3ede2;
+  --global-masthead-link-color: #b3261e;
+  --global-masthead-link-color-hover: #7a1e1e;
+  --global-masthead-hover-bg: #ebe3d5;
+
+  /* Text */
+  --global-text-color: #2a2420;
+  --global-text-color-light: #6b5f55;
+  --global-code-text-color: #7a1e1e;
+
   /* Borders */
-  --global-border-color: #a9b2bc;
-  --global-dark-border-color: #6b7280;
-  --global-thead-color: #cbd5e1;
-  
-  /* Accents: Blended Blue */
-  --global-base-color: #5f758c; 
-  --global-link-color: #366687;           /* Muted Slate-Blue */
-  --global-link-color-hover: #264961;    /* Slightly darker for hover */
-  --global-link-color-visited: #366687; 
-  
-  --global-fig-caption-color: #4b5563;
+  --global-border-color: #e2d8c8;
+  --global-dark-border-color: #b9ab97;
+  --global-thead-color: #ebe3d5;
+
+  /* Accents */
+  --global-base-color: #a32a2a;
+  --global-link-color: #a32a2a;
+  --global-link-color-hover: #7a1e1e;
+  --global-link-color-visited: #a32a2a;
+
+  --global-fig-caption-color: #6b5f55;
+
+  /* Code: ink on a darker parchment, syntax colours drawn from the site palette */
+  --code-bg: #ece3d3;
+  --code-border: #ddd1bd;
+  --code-text: #2a2420;
+  --code-comment: #7a6d5f;
+  --code-keyword: #a32a2a;
+  --code-string: #4d6b27;
+  --code-number: #95491a;
+  --code-function: #2f5d7c;
+  --code-variable: #6e4a7e;
+  --code-error: #b3261e;
+  --code-badge-bg: #e2d8c8;
+  --code-badge-text: #6b5f55;
+  --code-shadow: none;
+
+  /* Tags */
+  --tag-bg: #f3e1db;
+  --tag-border: #e8c9bf;
+  --tag-text: #8a2424;
+  --tag-bg-hover: #efd4cb;
 }
