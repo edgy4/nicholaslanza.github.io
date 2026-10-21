@@ -8,15 +8,14 @@ redirect_from:
 ---
 
 ## About Me
-I’m an **OSCP‑certified IT Technician** with **5 years of hands‑on experience** supporting Windows environments. Alongside my professional IT background, I am extremely passionate about offensive security and linux, developing practical exploitation skills through certifications, labs, and competitive platforms. You can view my resume here [CV](http://nicholaslanza.me/cv/).
+I’m an OSCP certified Junior Penetration Tester who recently made the transition into full-time offensive security after 5 years of hands-on experience supporting Windows environments. While my systems administration background gives me a solid operational understanding of how enterprise networks are work, my real drive comes from a genuine interest in offensive security. For me, hacking goes way beyond a 9-to-5. I spend my free time grinding through labs, learning new techniques, and competing in CTFs just because I enjoy the craft. You can view my resume here: [CV](http://nicholaslanza.me/cv/) .
 
 ## Purpose of This Site
-This website serves as a portfolio of techniques, tutorials, and machine walkthroughs. The goal is to present  thought processes clearly and professionally from an attacker's perspective, mirroring how I would approach a target during an assessment or red team engagement.
+This website serves as a portfolio of techniques, tutorials, and machine walkthroughs. The goal is to present  thought processes clearly and professionally from an attacker's perspective, mirroring how I would approach a target during an assessment.
 
 ## What You’ll Find Here
 
-• Lab write-ups from a variety of platforms, like Hack The Box, Offsec Proving Grounds, and VulnLabs.
-
+• Lab write-ups from a variety of platforms, like Hack The Box, Offsec Proving Grounds, and Hack Smarter.
 
 • Practical demonstrations of Linux and Windows exploitation 
 
